@@ -1,0 +1,12 @@
+Among Us Character from
+https://www.reddit.com/r/AmongUs/comments/iut5y2/couldnt_find_many_pngs_of_the_among_us_characters/
+
+Health P = Toughness*15 + Strength*2 + Power*1
+Spell P = IQ*10 + Dexterity*2
+
+Strength
+Toughness
+Dexterity
+IQ
+Power
+Charm
