@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private List<string> randomNames;
+    
     // Start is called before the first frame update
     private string name;
     
@@ -43,9 +45,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(Screen.currentResolution);
-        name = nameText.text;
         
+    }
+
+    public void generate()
+    {
+        name = nameText.text;
         health = int.Parse(nameText.text);
         strength = int.Parse(strengthText.text);
         toughness = int.Parse(toughnessText.text);
@@ -53,10 +58,7 @@ public class UIManager : MonoBehaviour
         iq = int.Parse(iqText.text);
         power = int.Parse(powerText.text);
         charm = int.Parse(charmText.text);
-    }
-
-    public void generate()
-    {
+        
         if (nameText.text != null &&
             healthText.text != null &&
             strengthText.text != null &&
@@ -67,12 +69,10 @@ public class UIManager : MonoBehaviour
             charmText.text != null)
         {
             Debug.Log("Ha");
-            //hp = toughness * 15 + strength * 2 + power;
+            
             playerName.text = "Name: " + nameText.text;
             healthPoint.text = "hp: " + (toughness * 15 + strength * 2 + power).ToString();
             spellPoint.text = "SP: " + (iq * 10 + dexterity * 2).ToString();
-            print(toughness * 15 + strength * 2 + power);
-            print(iq * 10 + dexterity * 2);
             playerPanel.SetActive(true);
             inputPanel.SetActive(false);
         }
@@ -84,5 +84,22 @@ public class UIManager : MonoBehaviour
     {
         inputPanel.SetActive(true);
         playerPanel.SetActive(false);
+    }
+
+    public void random()
+    {
+        
+        health = Random.Range(0, 100);
+        strength = Random.Range(0, 100);
+        toughness = Random.Range(0, 100);
+        dexterity = Random.Range(0, 100);
+        iq = Random.Range(0, 100);
+        power = Random.Range(0, 100);
+        charm = Random.Range(0, 100);
+        playerName.text = "Name: " + randomNames[Random.Range (0, randomNames.Count)];
+        healthPoint.text = "hp: " + (toughness * 15 + strength * 2 + power).ToString();
+        spellPoint.text = "SP: " + (iq * 10 + dexterity * 2).ToString();
+        playerPanel.SetActive(true);
+        inputPanel.SetActive(false);
     }
 }
